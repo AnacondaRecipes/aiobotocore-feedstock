@@ -19,7 +19,7 @@ requirements:
   host:
     - python
     - pip
-
+    - setuptools
   run:
     - aiohttp >=3.3.1
     - aioitertools >=0.5.1
@@ -32,6 +32,7 @@ test:
     - aiobotocore
   commands:
     - pip check
+    - python <3.10
   requires:
     - pip
 
