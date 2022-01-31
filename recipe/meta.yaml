@@ -30,11 +30,11 @@ requirements:
 test:
   imports:
     - aiobotocore
-  commands:
-    - pip check
-    - python <3.10
   requires:
     - pip
+    - python <3.10
+  commands:
+    - pip check
 
 about:
   home: https://github.com/aio-libs/aiobotocore
