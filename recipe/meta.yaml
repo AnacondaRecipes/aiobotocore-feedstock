@@ -41,14 +41,17 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
+  license_url: https://github.com/aio-libs/aiobotocore/blob/master/LICENSE
   summary: Async client for aws services using botocore and aiohttp
   description: |
     Main purpose of this library to support amazon s3 api, but other services
     should work (may be with minor fixes). For now it has been tested only for
     upload/download api for s3. It has been reported that SQS and Dynamo
     services also work.
-  doc_url: http://aiobotocore.readthedocs.io
   dev_url: https://github.com/aio-libs/aiobotocore
+  doc_url: https://aiobotocore.readthedocs.io
+  doc_source_url: https://github.com/aio-libs/aiobotocore/tree/{{ version }}/docs
+  
 
 extra:
   recipe-maintainers:
