@@ -1,5 +1,5 @@
 {% set name = "aiobotocore" %}
-{% set version = "2.4.0" %}
+{% set version = "2.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f9fe0698cc497861bdb54cd16161c804031f758ada9480c35540f20c0c078385
+  sha256: 0603b74a582dffa7511ce7548d07dc9b10ec87bc5fb657eb0b34f9bd490958bf
 
 build:
-  skip: True  #[py<37]
+  skip: true  #[py<37]
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
@@ -41,7 +41,6 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
-  license_url: https://github.com/aio-libs/aiobotocore/blob/master/LICENSE
   summary: Async client for aws services using botocore and aiohttp
   description: |
     Main purpose of this library to support amazon s3 api, but other services
@@ -50,7 +49,6 @@ about:
     services also work.
   dev_url: https://github.com/aio-libs/aiobotocore
   doc_url: https://aiobotocore.readthedocs.io
-  doc_source_url: https://github.com/aio-libs/aiobotocore/tree/{{ version }}/docs
   
 
 extra:
