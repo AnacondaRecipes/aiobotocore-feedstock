@@ -36,17 +36,27 @@ requirements:
     - awscli >=1.37.0,<1.37.4
     - boto3 >=1.36.0,<1.36.4
 
+# moto >=4.2.9,<4.3.0 * does not exist (perhaps a typo or a missing channel);
+# time-machine >=2.15.0,<2.16.0 * does not exist (perhaps a typo or a missing channel).
+# The tests started working with these packages, but unfortunately, they are missing from the main channel.
+# The tests passed locally on Linux and OSX when using the conda-forge channel.
+# Commented out the tests until better conditions were met.
 test:
-  source_files:
-    - tests
+  #source_files:
+    #- tests
   imports:
     - aiobotocore
   commands:
     - pip check
-    - pytest -v tests
+    #- pytest -v tests
   requires:
     - pip
-    - pytest
+    #- pytest
+    #- moto >=4.2.9,<4.3.0
+    #- dill >=0.3.3,<0.4.0
+    #- docutils >=0.16,<0.17
+    #- pytest-asyncio >=0.23.8,<0.24.0
+    #- time-machine >=2.15.0,<2.16.0
 
 about:
   home: https://github.com/aio-libs/aiobotocore
