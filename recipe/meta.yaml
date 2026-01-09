@@ -1,5 +1,5 @@
 {% set name = "aiobotocore" %}
-{% set version = "2.25.0" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/aio-libs/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 02d3176e439ceb80f45951aabbe4238cf370cda5fda3dbcfea40cd995f63d93a
+  sha256: d3c77c17f006a1748b9a63ea8a0aef454cc9385fc37b7134ccab949f899ac652
 
 build:
   number: 0
-  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: true  # [py<39]
 
 requirements:
   host:
@@ -21,18 +21,18 @@ requirements:
     - setuptools >=77.0.0
   run:
     - python
-    - aiohttp >=3.9.2,<4.0.0
+    - aiohttp >=3.12.0,<4.0.0
     - aioitertools >=0.5.1,<1.0.0
-    - botocore >=1.40.46,<1.40.50
+    - botocore >=1.41.0,<1.42.20
     - python-dateutil >=2.1,<3.0.0
     - jmespath >=0.7.1,<2.0.0
     - multidict >=6.0.0,<7.0.0
+    - typing-extensions >=4.14.0,<5.0.0  # [py<311]
     - wrapt >=1.10.10,<2.0.0
   run_constrained:
-    - awscli >=1.42.46,<1.42.50
-    - boto3 >=1.40.46,<1.40.50
     - httpx >=0.25.1,<0.29
 
+# Need to rebuild s3transfer 0.2.0 to run tests, won`t do.
 test:
   imports:
     - aiobotocore
@@ -44,10 +44,8 @@ test:
     - aiobotocore.endpoint
     - aiobotocore.eventstream
     - aiobotocore.httpchecksum
-    # Optional extra; do not import unless httpx is installed
-    # - aiobotocore.httpsession
-    # - aiobotocore.httpxsession
-    # If you prefer to test it, uncomment above and add httpx to test.requires.
+    - aiobotocore.httpsession
+    - aiobotocore.httpxsession
     - aiobotocore.parsers
     - aiobotocore.response
     - aiobotocore.retries
@@ -58,13 +56,12 @@ test:
     - aiobotocore.tokens
     - aiobotocore.utils
     - aiobotocore.waiter
-  requires:
-    - pip
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    # Missing specific 'boto3' dependency version required by 'moto'. Consider re-running tests after the next version bump.
-    # - pytest -v tests
+  requires:
+    - pip
+
 
 about:
   home: https://github.com/aio-libs/aiobotocore
