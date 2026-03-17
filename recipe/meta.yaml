@@ -1,13 +1,13 @@
 {% set name = "aiobotocore" %}
-{% set version = "3.1.0" %}
+{% set version = "3.2.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/aio-libs/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: d3c77c17f006a1748b9a63ea8a0aef454cc9385fc37b7134ccab949f899ac652
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 59b1c1f59860cb10b2e5096edcc87a88842bee301969bd76a3ca0b1c4c30e6d3
 
 build:
   number: 0
@@ -23,12 +23,12 @@ requirements:
     - python
     - aiohttp >=3.12.0,<4.0.0
     - aioitertools >=0.5.1,<1.0.0
-    - botocore >=1.41.0,<1.42.20
+    - botocore >=1.42.53,<1.42.62
     - python-dateutil >=2.1,<3.0.0
     - jmespath >=0.7.1,<2.0.0
     - multidict >=6.0.0,<7.0.0
     - typing-extensions >=4.14.0,<5.0.0  # [py<311]
-    - wrapt >=1.10.10,<2.0.0
+    - wrapt >=1.10.10,<3.0.0
   run_constrained:
     - httpx >=0.25.1,<0.29
 
